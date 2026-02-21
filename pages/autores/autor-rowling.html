@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Biblioteca Atlas - J.K. Rowling</title>
+
+    <meta
+      name="description"
+      content="Biblioteca Atlas: explora géneros, libros y autores."
+    />
+
+    <link
+      rel="stylesheet"
+      href="../../src/asset/bootstrap/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../src/asset/font-awesome/css/font-awesome.min.css"
+    />
+  </head>
+
+  <body class="bg-light">
+    <header class="border-bottom text-center bg-white">
+      <img
+        class="d-block mx-auto mb-4"
+        src="../../src/asset/images/atlas.jpg"
+        width="250"
+        alt="Logo Biblioteca Atlas"
+      />
+
+      <h1 class="display-5 fw-bold text-body-emphasis">Biblioteca Atlas</h1>
+
+      <p class="text-muted lead mb-4">
+        <i class="fa fa-quote-left"></i>
+        Un mundo de historias en un solo lugar
+        <i class="fa fa-quote-right"></i>
+      </p>
+    </header>
+
+    <section class="bg-light border-bottom">
+      <div class="container py-2">
+        <form class="d-flex">
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa fa-search"></i></span>
+
+            <label for="search" class="visually-hidden">Buscar</label>
+            <input
+              id="search"
+              class="form-control"
+              type="search"
+              placeholder="Buscar en géneros, libros y autores..."
+            />
+
+            <button class="btn btn-secondary" type="submit">
+              <i class="fa fa-arrow-right"></i> Buscar
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <nav class="navbar navbar-dark bg-dark" aria-label="Navegación principal">
+      <div class="container">
+        <ul class="navbar-nav mx-auto flex-row">
+          <li class="nav-item px-3">
+            <a class="nav-link" href="../../index.html">Géneros</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link" href="../libros/index.html">Libros</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link" href="index.html">Autores</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="container py-4">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <article
+            class="card shadow-lg border-0 rounded-4 overflow-hidden mb-4"
+          >
+            <header class="bg-dark text-white p-4">
+              <h2 class="fw-bold mb-1">
+                <i class="fa fa-user" aria-hidden="true"></i> J.K. Rowling
+              </h2>
+              <p class="fst-italic">
+                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                La felicidad puede encontrarse incluso en los momentos más
+                oscuros, si uno recuerda encender la luz.
+                <i class="fa fa-quote-right" aria-hidden="true"></i>
+              </p>
+            </header>
+
+            <div class="card-body p-4">
+              <!-- Datos del autor -->
+              <div class="row mb-4">
+                <p class="col-md-6">
+                  <i class="fa fa-flag" aria-hidden="true"></i>
+                  <strong>Nacionalidad:</strong> Británica
+                </p>
+
+                <p class="col-md-3">
+                  <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+                  <strong>Nacimiento:</strong> 1965
+                </p>
+
+                <p class="col-md-3">
+                  <i class="fa fa-cross" aria-hidden="true"></i>
+                  <strong>Fallecimiento:</strong> —
+                </p>
+              </div>
+
+              <section>
+                <h3><i class="fa fa-book" aria-hidden="true"></i> Biografía</h3>
+                <p>
+                  Joanne Kathleen Rowling es una escritora y productora
+                  británica, mundialmente conocida por crear la saga de Harry
+                  Potter. Sus libros han sido traducidos a decenas de idiomas y
+                  han dado origen a una de las franquicias más exitosas del
+                  mundo, combinando fantasía, aventura y temas profundos como la
+                  amistad y el valor.
+                </p>
+              </section>
+
+              <section>
+                <h3><i class="fa fa-trophy" aria-hidden="true"></i> Premios</h3>
+                <ul class="list-group">
+                  <li class="list-group-item">Premio Hugo</li>
+                  <li class="list-group-item">
+                    Premio Princesa de Asturias de la Concordia
+                  </li>
+                  <li class="list-group-item">
+                    Orden del Imperio Británico (OBE)
+                  </li>
+                </ul>
+              </section>
+
+              <section class="mt-3">
+                <h3>
+                  <i class="fa fa-bookmark" aria-hidden="true"></i> Libros
+                </h3>
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    Harry Potter y la piedra filosofal
+                  </li>
+                  <li class="list-group-item">
+                    Harry Potter y la cámara secreta
+                  </li>
+                  <li class="list-group-item">
+                    Harry Potter y el prisionero de Azkaban
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <script src="../../src/asset/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
