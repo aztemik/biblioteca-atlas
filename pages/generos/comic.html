@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biblioteca Atlas - Cómic</title>
+    <meta
+      name="description"
+      content="Libros de cómic disponibles en Biblioteca Atlas"
+    />
+
+    <link rel="stylesheet" href="/src/asset/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="/src/asset/font-awesome/css/font-awesome.min.css"
+    />
+  </head>
+
+  <body class="bg-light">
+    <!-- HEADER -->
+    <header class="border border-bottom text-center bg-white">
+      <img
+        class="d-block mx-auto mb-4"
+        src="/src/asset/images/atlas.jpg"
+        width="250"
+        alt="Logo Biblioteca Atlas"
+      />
+
+      <h1 class="display-5 fw-bold text-body-emphasis">
+        Biblioteca Atlas - Cómic
+      </h1>
+
+      <p class="text-muted lead mb-4">
+        <i class="fa fa-quote-left"></i>
+        Un mundo de historias en un solo lugar
+        <i class="fa fa-quote-right"></i>
+      </p>
+    </header>
+
+    <!-- BUSCADOR -->
+    <section class="bg-light border-bottom">
+      <div class="container py-2">
+        <form class="d-flex" action="#" role="search">
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa fa-search"></i></span>
+
+            <label for="search" class="visually-hidden">Buscar libros</label>
+            <input
+              id="search"
+              class="form-control"
+              type="search"
+              placeholder="Buscar en géneros, libros y autores..."
+            />
+
+            <button class="btn btn-secondary" type="submit">
+              <i class="fa fa-arrow-right"></i> Buscar
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-dark bg-dark" aria-label="Navegación principal">
+      <div class="container">
+        <ul class="navbar-nav mx-auto flex-row">
+          <li class="nav-item px-3">
+            <a class="nav-link" href="/index.html">Géneros</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link" href="/pages/libros/index.html">Libros</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link" href="/pages/autores/index.html">Autores</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="container py-4">
+      <section class="row justify-content-center">
+        <div class="col-lg-8 col-xl-8">
+          <div class="row g-4">
+            <!-- LIBRO 1 -->
+            <article class="col-md-4 col-sm-6">
+              <a
+                href="/pages/libros/batman-killing-joke.html"
+                class="text-decoration-none"
+              >
+                <div class="card border-0 shadow-sm">
+                  <img
+                    src="https://placehold.co/400x600"
+                    class="card-img-top"
+                    alt="Batman: The Killing Joke"
+                  />
+                  <div class="card-body bg-dark text-white text-center">
+                    <h2 class="h5 card-title mb-1 text-truncate">
+                      Batman: The Killing Joke
+                    </h2>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- LIBRO 2 -->
+            <article class="col-md-4 col-sm-6">
+              <a
+                href="/pages/libros/watchmen.html"
+                class="text-decoration-none"
+              >
+                <div class="card border-0 shadow-sm">
+                  <img
+                    src="https://placehold.co/400x600"
+                    class="card-img-top"
+                    alt="Watchmen"
+                  />
+                  <div class="card-body bg-dark text-white text-center">
+                    <h2 class="h5 card-title mb-1 text-truncate">Watchmen</h2>
+                  </div>
+                </div>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/src/asset/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biblioteca Atlas - Batman: The Killing Joke</title>
+
+    <link rel="stylesheet" href="/src/asset/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="/src/asset/font-awesome/css/font-awesome.min.css"
+    />
+  </head>
+
+  <body class="bg-light">
+    <!-- HEADER -->
+    <header class="border-bottom text-center bg-white py-4">
+      <img
+        src="/src/asset/images/atlas.jpg"
+        alt="Logo Biblioteca Atlas"
+        width="250"
+        class="d-block mx-auto mb-3"
+      />
+
+      <h1 class="display-5 fw-bold">Biblioteca Atlas</h1>
+
+      <p class="text-muted lead mb-0">
+        <i class="fa fa-quote-left"></i>
+        Un mundo de historias en un solo lugar
+        <i class="fa fa-quote-right"></i>
+      </p>
+    </header>
+
+    <!-- BUSCADOR -->
+    <section class="bg-light border-bottom py-2">
+      <div class="container">
+        <form class="d-flex" role="search">
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa fa-search"></i></span>
+            <input
+              type="search"
+              class="form-control"
+              placeholder="Buscar en géneros, libros y autores..."
+              aria-label="Buscar"
+            />
+            <button class="btn btn-secondary" type="submit">
+              <i class="fa fa-arrow-right"></i> Buscar
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- NAV -->
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container">
+        <ul class="navbar-nav mx-auto flex-row">
+          <li class="nav-item px-3">
+            <a class="nav-link" href="/index.html">Géneros</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link" href="/pages/libros/index.html">Libros</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link" href="/pages/autores/index.html">Autores</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="container py-4">
+      <article class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+            <div class="row g-0">
+              <!-- PORTADA -->
+              <figure class="col-md-4 text-center p-4 bg-light">
+                <img
+                  src="https://placehold.co/400x600"
+                  alt="Portada Batman: The Killing Joke"
+                  class="img-fluid rounded shadow mb-3"
+                />
+
+                <figcaption>
+                  <span class="badge bg-primary">Cómic</span>
+                  <span class="badge bg-warning text-dark ms-1">1988</span>
+                </figcaption>
+              </figure>
+
+              <!-- INFO LIBRO -->
+              <div class="col-md-8">
+                <div class="card-body p-4">
+                  <h2 class="fw-bold mb-2">
+                    <i class="fa fa-book text-primary"></i>
+                    Batman: The Killing Joke
+                  </h2>
+
+                  <p>
+                    <i class="fa fa-user"></i> Autor:
+                    <a href="/pages/autores/autor-alan-moore.html"
+                      >Alan Moore</a
+                    >
+                  </p>
+
+                  <p><i class="fa fa-building"></i> Editorial: DC Comics</p>
+                  <p><i class="fa fa-star"></i> Rating: 4.8 / 5</p>
+
+                  <p class="text-muted fst-italic">
+                    Un oscuro vistazo al origen del Joker.
+                  </p>
+
+                  <section>
+                    <h3 class="fw-bold">
+                      <i class="fa fa-file-text"></i> Sinopsis
+                    </h3>
+                    <p>
+                      En "The Killing Joke", Alan Moore explora la historia de
+                      origen del Joker mientras desata un plan macabro contra
+                      Gotham y Batman. La narrativa alterna entre los eventos
+                      actuales y recuerdos del pasado del villano, revelando su
+                      transformación en el Príncipe Payaso del Crimen. Con
+                      ilustraciones icónicas de Brian Bolland, el cómic examina
+                      la delgada línea entre la cordura y la locura, mostrando
+                      el poder del trauma y la obsesión. Esta obra es un clásico
+                      del cómic, famosa por su intensidad y profundidad
+                      psicológica.
+                    </p>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <script src="/src/asset/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
