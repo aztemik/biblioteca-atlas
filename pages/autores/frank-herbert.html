@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Biblioteca Atlas - Frank Herbert</title>
+
+    <meta
+      name="description"
+      content="Biblioteca Atlas: explora géneros, libros y autores."
+    />
+
+    <link
+      rel="stylesheet"
+      href="../../src/asset/bootstrap/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../src/asset/font-awesome/css/font-awesome.min.css"
+    />
+  </head>
+
+  <body class="bg-light">
+    <header class="border-bottom text-center bg-white">
+      <img
+        class="d-block mx-auto mb-4"
+        src="../../src/asset/images/atlas.jpg"
+        width="250"
+        alt="Logo Biblioteca Atlas"
+      />
+
+      <h1 class="display-5 fw-bold text-body-emphasis">Biblioteca Atlas</h1>
+
+      <p class="text-muted lead mb-4">
+        <i class="fa fa-quote-left"></i>
+        Un mundo de historias en un solo lugar
+        <i class="fa fa-quote-right"></i>
+      </p>
+    </header>
+
+    <section class="bg-light border-bottom">
+      <div class="container py-2">
+        <form class="d-flex">
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa fa-search"></i></span>
+
+            <label for="search" class="visually-hidden">Buscar</label>
+            <input
+              id="search"
+              class="form-control"
+              type="search"
+              placeholder="Buscar en géneros, libros y autores..."
+            />
+
+            <button class="btn btn-secondary" type="submit">
+              <i class="fa fa-arrow-right"></i> Buscar
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <nav class="navbar navbar-dark bg-dark" aria-label="Navegación principal">
+      <div class="container">
+        <ul class="navbar-nav mx-auto flex-row">
+          <li class="nav-item px-3">
+            <a class="nav-link" href="../../index.html">Géneros</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link" href="../libros/index.html">Libros</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link" href="index.html">Autores</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="container py-4">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <article
+            class="card shadow-lg border-0 rounded-4 overflow-hidden mb-4"
+          >
+            <header class="bg-dark text-white p-4">
+              <h2 class="fw-bold mb-1">
+                <i class="fa fa-user"></i> Frank Herbert
+              </h2>
+              <p class="fst-italic">
+                <i class="fa fa-quote-left"></i>
+                La ciencia ficción es una manera de pensar en el futuro sin
+                miedo.
+                <i class="fa fa-quote-right"></i>
+              </p>
+            </header>
+
+            <div class="card-body p-4">
+              <div class="row mb-4">
+                <p class="col-md-6">
+                  <i class="fa fa-flag"></i>
+                  <strong>Nacionalidad:</strong> Estadounidense
+                </p>
+
+                <p class="col-md-3">
+                  <i class="fa fa-birthday-cake"></i>
+                  <strong>Nacimiento:</strong> 1920
+                </p>
+
+                <p class="col-md-3">
+                  <i class="fa fa-cross"></i>
+                  <strong>Fallecimiento:</strong> 1986
+                </p>
+              </div>
+
+              <section>
+                <h3><i class="fa fa-book"></i> Biografía</h3>
+                <p>
+                  Frank Herbert fue un escritor, periodista y fotógrafo
+                  estadounidense, reconocido como uno de los autores más
+                  influyentes de la ciencia ficción del siglo XX. Antes de
+                  dedicarse por completo a la escritura, trabajó como reportero
+                  y editor, lo que influyó en su estilo detallado y reflexivo.
+                </p>
+
+                <p>
+                  Su obra más famosa, <strong>Dune</strong>, revolucionó la
+                  ciencia ficción al mezclar política, religión, ecología y
+                  filosofía en una historia épica ambientada en un futuro
+                  lejano. Herbert estaba profundamente interesado en cómo las
+                  sociedades humanas reaccionan al poder, la escasez de recursos
+                  y las figuras mesiánicas.
+                </p>
+
+                <p>
+                  A lo largo de su carrera escribió numerosas novelas y relatos,
+                  explorando temas complejos como la evolución humana, la
+                  inteligencia artificial y la manipulación social,
+                  convirtiéndose en una referencia obligatoria del género.
+                </p>
+              </section>
+
+              <section>
+                <h3><i class="fa fa-trophy"></i> Premios</h3>
+                <ul class="list-group">
+                  <li class="list-group-item">Premio Hugo</li>
+                  <li class="list-group-item">Premio Nébula</li>
+                </ul>
+              </section>
+
+              <section class="mt-3">
+                <h3><i class="fa fa-bookmark"></i> Libros</h3>
+                <ul class="list-group">
+                  <li class="list-group-item">Dune</li>
+                  <li class="list-group-item">El Mesías de Dune</li>
+                  <li class="list-group-item">Hijos de Dune</li>
+                </ul>
+              </section>
+            </div>
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <script src="../../src/asset/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
