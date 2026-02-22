@@ -1,180 +1,98 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Biblioteca Atlas</title>
-
-    <meta
-      name="description"
-      content="Biblioteca Atlas: explora géneros, libros y autores."
-    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login</title>
 
     <link rel="stylesheet" href="src/asset/bootstrap/css/bootstrap.min.css" />
-    <link
-      rel="stylesheet"
-      href="src/asset/font-awesome/css/font-awesome.min.css"
-    />
   </head>
 
-  <body class="bg-light">
-    <!-- HEADER -->
-    <header class="border-bottom text-center bg-white">
-      <img
-        class="d-block mx-auto mb-4"
-        src="src/asset/images/atlas.jpg"
-        width="250"
-        alt="Logo Biblioteca Atlas"
-      />
+  <body class="d-flex align-items-center min-vh-100 bg-light">
+    <main class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-5">
+          <div class="card border border-0 shadow rounded-4">
+            <div class="card-body p-4 p-md-5">
+              <div class="mb-4">
+                <h1 class="h4 mb-1">
+                  <span></span>Bienvenido a la Biblioteca Digital Universitaria
+                </h1>
+              </div>
 
-      <h1 class="display-5 fw-bold text-body-emphasis">Biblioteca Atlas</h1>
-
-      <p class="text-muted lead mb-4">
-        <i class="fa fa-quote-left"></i>
-        Un mundo de historias en un solo lugar
-        <i class="fa fa-quote-right"></i>
-      </p>
-    </header>
-
-    <!-- BUSCADOR -->
-    <section class="bg-light border-bottom">
-      <div class="container py-2">
-        <form class="d-flex" action="#" role="search">
-          <div class="input-group">
-            <span class="input-group-text"><i class="fa fa-search"></i></span>
-
-            <label for="search" class="visually-hidden">Buscar</label>
-            <input
-              id="search"
-              class="form-control"
-              type="search"
-              placeholder="Buscar en géneros, libros y autores..."
-            />
-
-            <button class="btn btn-secondary" type="submit">
-              <i class="fa fa-arrow-right"></i> Buscar
-            </button>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <!-- NAVEGACIÓN -->
-    <nav class="navbar navbar-dark bg-dark" aria-label="Navegación principal">
-      <div class="container">
-        <ul class="navbar-nav mx-auto flex-row">
-          <li class="nav-item px-3">
-            <a class="nav-link active" href="index.html">Géneros</a>
-          </li>
-          <li class="nav-item px-3">
-            <a class="nav-link" href="pages/libros/index.html">Libros</a>
-          </li>
-          <li class="nav-item px-3">
-            <a class="nav-link" href="pages/autores/index.html">Autores</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="container py-4">
-      <section class="row justify-content-center">
-        <div class="col-lg-8 col-xl-8">
-          <div class="bc" id="pag"></div>
-          <div class="row g-4">
-            <!-- FANTASÍA -->
-            <article class="col-md-4 col-sm-6">
-              <a
-                href="pages/generos/fantasia.html"
-                class="card h-100 shadow-sm border-0 text-decoration-none"
-              >
-                <div class="position-relative">
-                  <img
-                    src="https://placehold.co/600x400?text=Fantasía"
-                    class="card-img-top"
-                    alt="Género Fantasía"
+              <form id="loginForm" novalidate>
+                <!-- Email -->
+                <div class="mb-3">
+                  <label for="emailUTP" class="form-label"
+                    >Correo institucional</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="emailUTP"
+                    name="emailUTP"
+                    required
+                    inputmode="email"
+                    placeholder="utp1234567@alumno.utpuebla.edu.mx"
+                    pattern="^utp[0-9]{7}@alumno\.utpuebla\.edu\.mx$"
                   />
-                  <span class="badge bg-dark position-absolute top-0 end-0 m-2">
-                    <i class="fa fa-book"></i> Fantasía
-                  </span>
+                  <div class="invalid-feedback" id="emailError">
+                    Error en correo.
+                  </div>
+                  <div class="form-text">
+                    Formato: <code>utp</code> + <code>6 dígitos</code> +
+                    <code>@alumno.utpuebla.edu.mx</code>
+                  </div>
                 </div>
-                <div class="card-footer bg-light text-center small text-muted">
-                  <i class="fa fa-arrow-right"></i> Explorar categoría
-                </div>
-              </a>
-            </article>
 
-            <!-- CIENCIA FICCIÓN -->
-            <article class="col-md-4 col-sm-6">
-              <a
-                href="pages/generos/ciencia-ficcion.html"
-                class="card h-100 shadow-sm border-0 text-decoration-none"
-              >
-                <div class="position-relative">
-                  <img
-                    src="https://placehold.co/600x400?text=Ciencia%20Ficción"
-                    class="card-img-top"
-                    alt="Género Ciencia Ficción"
+                <!-- Password -->
+                <div class="mb-3">
+                  <label for="password" class="form-label">Contraseña</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    required
+                    minlength="6"
+                    placeholder="Mínimo 6 caracteres"
                   />
-                  <span class="badge bg-dark position-absolute top-0 end-0 m-2">
-                    <i class="fa fa-book"></i> Ciencia Ficción
-                  </span>
+                  <div class="invalid-feedback" id="passError">
+                    Error en contraseña.
+                  </div>
                 </div>
-                <div class="card-footer bg-light text-center small text-muted">
-                  <i class="fa fa-arrow-right"></i> Explorar categoría
-                </div>
-              </a>
-            </article>
 
-            <!-- TERROR -->
-            <article class="col-md-4 col-sm-6">
-              <a
-                href="pages/generos/terror.html"
-                class="card h-100 shadow-sm border-0 text-decoration-none"
-              >
-                <div class="position-relative">
-                  <img
-                    src="https://placehold.co/600x400?text=Terror"
-                    class="card-img-top"
-                    alt="Género Terror"
+                <!-- Matrícula-->
+                <div class="mb-4">
+                  <label for="matricula" class="form-label"
+                    >Matrícula (6 dígitos)</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="matricula"
+                    name="matricula"
+                    required
+                    inputmode="numeric"
+                    minlength="7"
+                    maxlength="7"
+                    pattern="^[0-9]{7}$"
+                    placeholder="Ej. 1234567"
                   />
-                  <span class="badge bg-dark position-absolute top-0 end-0 m-2">
-                    <i class="fa fa-book"></i> Terror
-                  </span>
+                  <div class="invalid-feedback" id="matError">
+                    Error en matrícula.
+                  </div>
                 </div>
-                <div class="card-footer bg-light text-center small text-muted">
-                  <i class="fa fa-arrow-right"></i> Explorar categoría
-                </div>
-              </a>
-            </article>
 
-            <!-- CÓMIC -->
-            <article class="col-md-4 col-sm-6">
-              <a
-                href="pages/generos/comic.html"
-                class="card h-100 shadow-sm border-0 text-decoration-none"
-              >
-                <div class="position-relative">
-                  <img
-                    src="https://placehold.co/600x400?text=Cómic"
-                    class="card-img-top"
-                    alt="Género Cómic"
-                  />
-                  <span class="badge bg-dark position-absolute top-0 end-0 m-2">
-                    <i class="fa fa-book"></i> Cómic
-                  </span>
-                </div>
-                <div class="card-footer bg-light text-center small text-muted">
-                  <i class="fa fa-arrow-right"></i> Explorar categoría
-                </div>
-              </a>
-            </article>
+                <button type="submit" class="btn btn-primary w-100">
+                  Entrar
+                </button>
+              </form>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
     </main>
-
-    <script src="src/js/main.js"></script>
-    <script src="src/asset/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="src/js/validation.js"></script>
   </body>
 </html>

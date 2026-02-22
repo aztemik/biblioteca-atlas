@@ -1,5 +1,5 @@
 const rutas = [
-  { ruta: "/index.html", nombre: "Inicio", id: "pag" },
+  { ruta: "/home.html", nombre: "Inicio", id: "pag" },
   {
     ruta: "/pages/generos/ciencia-ficcion.html",
     nombre: "Ciencia Ficción",
