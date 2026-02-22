@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login</title>
+
+    <link rel="stylesheet" href="src/asset/bootstrap/css/bootstrap.min.css" />
+
+  <style>
+    body { background: #f6f7fb; }
+    .card { border: 0; box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+  </style>
+</head>
+
+<body class="d-flex align-items-center min-vh-100">
+  <main class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-5">
+        <div class="card rounded-4">
+          <div class="card-body p-4 p-md-5">
+            <div class="mb-4">
+              <h1 class="h4 mb-1"><span ></span>Bienvenido a la Biblioteca Digital Universitaria </h1>
+            </div>
+
+            <form id="loginForm" novalidate>
+              <!-- Email -->
+              <div class="mb-3">
+                <label for="emailUTP" class="form-label">Correo institucional</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="emailUTP"
+                  name="emailUTP"
+                  required
+                  inputmode="email"
+                  placeholder="utp1234567@alumno.utpuebla.edu.mx"
+                  pattern="^utp[0-9]{7}@alumno\.utpuebla\.edu\.mx$"
+                />
+                <div class="invalid-feedback" id="emailError">Error en correo.</div>
+                <div class="form-text">
+                  Formato: <code>utp</code> + <code>6 dígitos</code> + <code>@alumno.utpuebla.edu.mx</code>
+                </div>
+              </div>
+
+              <!-- Password -->
+              <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  required
+                  minlength="6"
+                  placeholder="Mínimo 6 caracteres"
+                />
+                <div class="invalid-feedback" id="passError">Error en contraseña.</div>
+              </div>
+
+              <!-- Matrícula-->
+              <div class="mb-4">
+                <label for="matricula" class="form-label">Matrícula (6 dígitos)</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="matricula"
+                  name="matricula"
+                  required
+                  inputmode="numeric"
+                  minlength="7"
+                  maxlength="7"
+                  pattern="^[0-9]{7}$"
+                  placeholder="Ej. 1234567"
+                />
+                <div class="invalid-feedback" id="matError">Error en matrícula.</div>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100">
+                Entrar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Elementos
+    const form = document.getElementById("loginForm");
+    const email = document.getElementById("emailUTP");
+    const password = document.getElementById("password");
+    const matricula = document.getElementById("matricula");
+
+    const emailError = document.getElementById("emailError");
+    const passError = document.getElementById("passError");
+    const matError = document.getElementById("matError");
+
+    // aplica mensaje personalizado
+    function setFieldValidity(input, message, feedbackEl) {
+      input.setCustomValidity(message || "");
+      // validation general para validaciones no pensadas
+      if (feedbackEl) feedbackEl.textContent = message || "Campo inválido.";
+      // Forzar estilos Bootstrap según validez
+      input.classList.toggle("is-invalid", !input.checkValidity());
+      input.classList.toggle("is-valid", input.checkValidity());
+    }
+
+    // Validación del correo UTP
+    function validateEmail() {
+      email.setCustomValidity(""); // reset
+
+      if (email.validity.valueMissing) {
+        setFieldValidity(email, "El correo es obligatorio.", emailError);
+        return false;
+      }
+
+      if (email.validity.typeMismatch) {
+        setFieldValidity(email, "Escribe un correo válido (formato general).", emailError);
+        return false;
+      }
+
+      if (email.validity.patternMismatch) {
+        setFieldValidity(
+          email,
+          "Correo inválido. Debe ser: utp + 6 dígitos + @alumno.utpuebla.edu.mx",
+          emailError
+        );
+        return false;
+      }
+
+      setFieldValidity(email, "", emailError);
+      return true;
+    }
+
+    // Validación de contraseña (longitud mínima)
+    function validatePassword() {
+      password.setCustomValidity("");
+
+      if (password.validity.valueMissing) {
+        setFieldValidity(password, "La contraseña es obligatoria.", passError);
+        return false;
+      }
+
+      if (password.validity.tooShort) {
+        setFieldValidity(password, "La contraseña debe tener mínimo 6 caracteres.", passError);
+        return false;
+      }
+
+      setFieldValidity(password, "", passError);
+      return true;
+    }
+
+    // Validación numérica + longitud (matrícula)
+    function validateMatricula() {
+      matricula.setCustomValidity("");
+
+      if (matricula.validity.valueMissing) {
+        setFieldValidity(matricula, "La matrícula es obligatoria.", matError);
+        return false;
+      }
+
+      if (matricula.validity.tooShort || matricula.validity.tooLong) {
+        setFieldValidity(matricula, "La matrícula debe tener exactamente 7 dígitos.", matError);
+        return false;
+      }
+
+      if (matricula.validity.patternMismatch) {
+        setFieldValidity(matricula, "Solo se permiten números (7 dígitos).", matError);
+        return false;
+      }
+
+      setFieldValidity(matricula, "", matError);
+      return true;
+    }
+
+    // Eventos "input" para reaccion en vivo
+    email.addEventListener("input", validateEmail);
+    password.addEventListener("input", validatePassword);
+    matricula.addEventListener("input", validateMatricula);
+
+    // evita el envío si hay errores y "navegar" si todo ok
+    form.addEventListener("submit", (e) => {
+      e.preventDefault(); // siempre bloqueamos, y solo redirigimos si todo está bien
+
+      const okEmail = validateEmail();
+      const okPass = validatePassword();
+      const okMat = validateMatricula();
+
+      // Si algo falla, no navegamos
+      if (!(okEmail && okPass && okMat)) return;
+
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>
