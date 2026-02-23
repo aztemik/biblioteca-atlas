@@ -41,7 +41,7 @@
 
     <section class="bg-light border-bottom">
       <div class="container py-2">
-        <form class="d-flex">
+        <form class="d-flex" action="#" role="search" id="searchForm">
           <div class="input-group">
             <span class="input-group-text"><i class="fa fa-search"></i></span>
 
@@ -51,6 +51,7 @@
               class="form-control"
               type="search"
               placeholder="Buscar en géneros, libros y autores..."
+              autocomplete="off"
             />
 
             <button class="btn btn-secondary" type="submit">
@@ -58,8 +59,11 @@
             </button>
           </div>
         </form>
+
+        <div id="searchResults" class="mt-3"></div>
       </div>
     </section>
+
 
     <nav class="navbar navbar-dark bg-dark" aria-label="Navegación principal">
       <div class="container">
@@ -153,5 +157,6 @@
     </main>
     <script src="/src/js/breadcrumbs.js"></script>
     <script src="../../src/asset/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../src/js/buscador.js"></script>
   </body>
 </html>
