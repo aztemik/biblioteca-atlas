@@ -1,26 +1,183 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Librería</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login | Biblioteca Digital Universitaria</title>
 
     <link rel="stylesheet" href="src/asset/bootstrap/css/bootstrap.min.css" />
 
-    <link
-      rel="stylesheet"
-      href="src/asset/font-awesome/css/font-awesome.min.css"
-    />
+    <style>
+      .tree-line {
+        border-left: 2px solid #dee2e6;
+        margin-left: 1.25rem;
+        padding-left: 1.5rem;
+        position: relative;
+      }
 
+      .node-step {
+        position: relative;
+        margin-bottom: 1.5rem;
+      }
+
+      .node-step::before {
+        content: "";
+        position: absolute;
+        left: -1.5rem;
+        top: 12px;
+        width: 1.2rem;
+        border-top: 2px solid #dee2e6;
+      }
+
+      .hover-card:hover {
+        border-color: #0d6efd !important;
+        transition: all 0.3s ease;
+      }
     </style>
   </head>
 
   <body class="bg-light">
-    <div id="app">
-      
-    </div>
+    <main class="container min-vh-100 d-flex align-items-center">
+      <div class="row w-100 justify-content-center">
+        <!-- Sección informativa -->
+        <aside
+          class="col-lg-7 d-none d-lg-block"
+          aria-label="Información de la biblioteca"
+        >
+          <header class="mb-4">
+            <h2 class="display-6 fw-bold text-primary">Explora el Contenido</h2>
+            <p class="text-muted">
+              Así está organizada nuestra biblioteca para ti:
+            </p>
+          </header>
 
-    <script src="src/asset/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="src/js/main.js"></script>
+          <section class="tree-line">
+            <article class="node-step">
+              <div class="card border-0 shadow-sm p-3 hover-card">
+                <h3 class="h5 mb-2 text-primary">Géneros Literarios</h3>
+
+                <div class="d-flex flex-wrap gap-2 mb-2">
+                  <span class="badge bg-light text-dark border">Terror</span>
+                  <span class="badge bg-light text-dark border">Fantasía</span>
+                  <span class="badge bg-light text-dark border"
+                    >Ciencia Ficción</span
+                  >
+                  <span class="badge bg-light text-muted border">...</span>
+                </div>
+
+                <p class="small text-muted mb-0">
+                  Selecciona un género para ver todos sus libros y acceder a la
+                  información del autor.
+                </p>
+              </div>
+            </article>
+
+            <article class="node-step">
+              <div class="card border-0 shadow-sm p-3 hover-card">
+                <h3 class="h5 mb-2 text-primary">Catálogo de Libros</h3>
+                <p class="small text-muted mb-0">
+                  Accede a obras maestras como <em>Drácula</em>, <em>Dune</em> o
+                  <em>Fundación</em>.
+                </p>
+              </div>
+            </article>
+
+            <article class="node-step">
+              <div class="card border-0 shadow-sm p-3 hover-card">
+                <h3 class="h5 mb-2 text-primary">Autores Destacados</h3>
+                <p class="small text-muted mb-0">
+                  Consulta biografías de Stephen King, Mary Shelley y más.
+                </p>
+              </div>
+            </article>
+          </section>
+        </aside>
+
+        <!-- Sección Login -->
+        <section class="col-12 col-md-8 col-lg-5" aria-labelledby="loginTitle">
+          <div class="card shadow-sm rounded-4 border-0">
+            <div class="card-body p-4 p-md-5">
+              <header class="mb-4 text-center text-md-start">
+                <h1 id="loginTitle" class="h4 mb-1">
+                  Bienvenido a la Biblioteca Digital Universitaria
+                </h1>
+              </header>
+
+              <form id="loginForm" novalidate>
+                <!-- Email -->
+                <div class="mb-3">
+                  <label for="emailUTP" class="form-label">
+                    Correo institucional
+                  </label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="emailUTP"
+                    name="emailUTP"
+                    required
+                    inputmode="email"
+                    placeholder="utp1234567@alumno.utpuebla.edu.mx"
+                    pattern="^utp[0-9]{7}@alumno\.utpuebla\.edu\.mx$"
+                    aria-describedby="emailHelp emailError"
+                  />
+                  <div id="emailError" class="invalid-feedback">
+                    El correo debe tener el formato correcto.
+                  </div>
+                  <div id="emailHelp" class="form-text">
+                    Formato: utp + 7 dígitos + @alumno.utpuebla.edu.mx
+                  </div>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                  <label for="password" class="form-label"> Contraseña </label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    required
+                    minlength="6"
+                    placeholder="Mínimo 6 caracteres"
+                    aria-describedby="passError"
+                  />
+                  <div id="passError" class="invalid-feedback">
+                    La contraseña debe tener al menos 6 caracteres.
+                  </div>
+                </div>
+
+                <!-- Matrícula -->
+                <div class="mb-4">
+                  <label for="matricula" class="form-label">
+                    Matrícula (7 dígitos)
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="matricula"
+                    name="matricula"
+                    required
+                    inputmode="numeric"
+                    maxlength="7"
+                    pattern="^[0-9]{7}$"
+                    placeholder="Ej. 1234567"
+                    aria-describedby="matError"
+                  />
+                  <div id="matError" class="invalid-feedback">
+                    La matrícula debe contener exactamente 7 números.
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">
+                  Entrar
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="src/js/validation.js"></script>
   </body>
 </html>

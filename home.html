@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biblioteca Atlas</title>
+
+    <meta
+      name="description"
+      content="Biblioteca Atlas: explora géneros, libros y autores."
+    />
+
+    <link rel="stylesheet" href="src/asset/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="src/asset/font-awesome/css/font-awesome.min.css"
+    />
+  </head>
+
+  <body class="bg-light">
+    <!-- HEADER -->
+    <header class="border-bottom text-center bg-white">
+      <img
+        class="d-block mx-auto mb-4"
+        src="src/asset/images/atlas.jpg"
+        width="250"
+        alt="Logo Biblioteca Atlas"
+      />
+
+      <h1 class="display-5 fw-bold text-body-emphasis">Biblioteca Atlas</h1>
+
+      <p class="text-muted lead mb-4">
+        <i class="fa fa-quote-left"></i>
+        Un mundo de historias en un solo lugar
+        <i class="fa fa-quote-right"></i>
+      </p>
+    </header>
+
+    <!-- BUSCADOR -->
+    <section class="bg-light border-bottom">
+      <div class="container py-2">
+        <form class="d-flex" action="#" role="search" id="searchForm">
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa fa-search"></i></span>
+
+            <label for="search" class="visually-hidden">Buscar</label>
+            <input
+              id="search"
+              class="form-control"
+              type="search"
+              placeholder="Buscar en géneros, libros y autores..."
+              autocomplete="off"
+            />
+
+            <button class="btn btn-secondary" type="submit">
+              <i class="fa fa-arrow-right"></i> Buscar
+            </button>
+          </div>
+        </form>
+
+        <div id="searchResults" class="mt-3"></div>
+      </div>
+    </section>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="navbar navbar-dark bg-dark" aria-label="Navegación principal">
+      <div class="container">
+        <ul class="navbar-nav mx-auto flex-row">
+          <li class="nav-item px-3">
+            <a class="nav-link active" href="home.html">Géneros</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link" href="pages/libros/index.html">Libros</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link" href="pages/autores/index.html">Autores</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="container py-4">
+      <section class="row justify-content-center">
+        <div class="col-lg-8 col-xl-8">
+          <div class="bc" id="pag"></div>
+          <div class="row g-4">
+            <!-- FANTASÍA -->
+            <article class="col-md-4 col-sm-6">
+              <a
+                href="pages/generos/fantasia.html"
+                class="card h-100 shadow-sm border-0 text-decoration-none"
+              >
+                <div class="position-relative">
+                  <img
+                    src="https://placehold.co/600x400?text=Fantasía"
+                    class="card-img-top"
+                    alt="Género Fantasía"
+                  />
+                  <span class="badge bg-dark position-absolute top-0 end-0 m-2">
+                    <i class="fa fa-book"></i> Fantasía
+                  </span>
+                </div>
+                <div class="card-footer bg-light text-center small text-muted">
+                  <i class="fa fa-arrow-right"></i> Explorar categoría
+                </div>
+              </a>
+            </article>
+
+            <!-- CIENCIA FICCIÓN -->
+            <article class="col-md-4 col-sm-6">
+              <a
+                href="pages/generos/ciencia-ficcion.html"
+                class="card h-100 shadow-sm border-0 text-decoration-none"
+              >
+                <div class="position-relative">
+                  <img
+                    src="https://placehold.co/600x400?text=Ciencia%20Ficción"
+                    class="card-img-top"
+                    alt="Género Ciencia Ficción"
+                  />
+                  <span class="badge bg-dark position-absolute top-0 end-0 m-2">
+                    <i class="fa fa-book"></i> Ciencia Ficción
+                  </span>
+                </div>
+                <div class="card-footer bg-light text-center small text-muted">
+                  <i class="fa fa-arrow-right"></i> Explorar categoría
+                </div>
+              </a>
+            </article>
+
+            <!-- TERROR -->
+            <article class="col-md-4 col-sm-6">
+              <a
+                href="pages/generos/terror.html"
+                class="card h-100 shadow-sm border-0 text-decoration-none"
+              >
+                <div class="position-relative">
+                  <img
+                    src="https://placehold.co/600x400?text=Terror"
+                    class="card-img-top"
+                    alt="Género Terror"
+                  />
+                  <span class="badge bg-dark position-absolute top-0 end-0 m-2">
+                    <i class="fa fa-book"></i> Terror
+                  </span>
+                </div>
+                <div class="card-footer bg-light text-center small text-muted">
+                  <i class="fa fa-arrow-right"></i> Explorar categoría
+                </div>
+              </a>
+            </article>
+
+            <!-- CÓMIC -->
+            <article class="col-md-4 col-sm-6">
+              <a
+                href="pages/generos/comic.html"
+                class="card h-100 shadow-sm border-0 text-decoration-none"
+              >
+                <div class="position-relative">
+                  <img
+                    src="https://placehold.co/600x400?text=Cómic"
+                    class="card-img-top"
+                    alt="Género Cómic"
+                  />
+                  <span class="badge bg-dark position-absolute top-0 end-0 m-2">
+                    <i class="fa fa-book"></i> Cómic
+                  </span>
+                </div>
+                <div class="card-footer bg-light text-center small text-muted">
+                  <i class="fa fa-arrow-right"></i> Explorar categoría
+                </div>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="src/js/breadcrumbs.js"></script>
+    <script src="src/asset/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="src/js/buscador.js"></script>
+  </body>
+</html>
