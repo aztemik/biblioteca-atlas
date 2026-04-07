@@ -10,10 +10,51 @@
     />
 
     <link rel="stylesheet" href="/src/asset/bootstrap/css/bootstrap.min.css" />
-    <link
-      rel="stylesheet"
-      href="/src/asset/font-awesome/css/font-awesome.min.css"
-    />
+    <link rel="stylesheet" href="/src/asset/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/src/asset/css/style.css" />
+    <style>
+      .book-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+      }
+      .book-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
+      }
+      .card-img-container {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 2/3;
+      }
+      .card-img-top {
+        transition: transform 0.5s ease;
+        object-fit: cover;
+        height: 100%;
+      }
+      .book-card:hover .card-img-top {
+        transform: scale(1.1);
+      }
+      .genre-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 2;
+        backdrop-filter: blur(5px);
+        background: rgba(13, 110, 253, 0.8) !important;
+      }
+      .rating-badge {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        z-index: 2;
+        background: rgba(255, 193, 7, 0.9);
+        color: #000;
+        font-weight: bold;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+      }
+    </style>
   </head>
 
   <body class="bg-light">

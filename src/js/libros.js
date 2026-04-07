@@ -32,10 +32,17 @@ async function loadBooks(page = 1) {
                 const bookCard = `
                     <article class="col-md-4 col-sm-6">
                         <div class="card border-0 shadow-sm h-100 book-card" data-id="${book.bookId}" style="cursor: pointer;">
-                            <img src="${book.imgUrl || 'https://placehold.co/400x600'}" class="card-img-top" alt="${book.name}">
-                            <div class="card-body bg-dark text-white text-center">
-                                <h2 class="h5 card-title mb-1 text-truncate">${book.name}</h2>
-                                <p class="small mb-0 text-muted">${book.genreName}</p>
+                            <div class="card-img-container">
+                                <span class="badge genre-badge">${book.genreName}</span>
+                                <span class="rating-badge"><i class="fa fa-star text-dark me-1"></i>${book.rating || 'N/A'}</span>
+                                <img src="${book.imgUrl || 'https://placehold.co/400x600'}" class="card-img-top" alt="${book.name}">
+                            </div>
+                            <div class="card-body bg-white text-center border-top">
+                                <h2 class="h6 card-title fw-bold mb-1 text-truncate">${book.name}</h2>
+                                <p class="small mb-0 text-muted fst-italic">${book.authorName}</p>
+                                <div class="mt-2 text-primary small fw-semibold">
+                                    Ver detalles <i class="fa fa-chevron-right ms-1" style="font-size: 0.7rem;"></i>
+                                </div>
                             </div>
                         </div>
                     </article>
