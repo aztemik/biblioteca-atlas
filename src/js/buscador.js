@@ -1,154 +1,112 @@
-paginas = [];
+import { api } from './api.js';
 
-const Archivos = [
-  // Géneros
-  "/pages/autores/autor-alan-moore.html",
-  "/pages/autores/autor-bram-stoker.html",
-  "/pages/autores/autor-grant-morrison.html",
-  "/pages/autores/autor-hp-lovecraft.html",
-  "/pages/autores/autor-mary-shelley.html",
-  "/pages/autores/autor-rowling.html",
-  "/pages/autores/autor-stephen-king.html",
-  "/pages/autores/autor-tolkien.html",
-  "/pages/autores/frank-herbert.html",
-  "/pages/autores/index.html",
-  "/pages/autores/isaac-asimov.html",
-  "/pages/autores/william-gibson.html",
-  
-  // Libros
-  "/pages/generos/ciencia-ficcion.html",
-  "/pages/generos/comic.html",
-  "/pages/generos/fantasia.html",
-  "/pages/generos/terror.html",
+let searchData = [];
 
-  // Autores 
-  "/pages/libros/all-star-superman.html",
-  "/pages/libros/batman-killing-joke.html",
-  "/pages/libros/dracula.html",
-  "/pages/libros/dune.html",
-  "/pages/libros/el-senor-de-los-anillos.html",
-  "/pages/libros/frankenstein.html",
-  "/pages/libros/fundacion.html",
-  "/pages/libros/harry-potter-piedra-filosofal.html",
-  "/pages/libros/index.html",
-  "/pages/libros/it.html",
-  "/pages/libros/la-llamada-de-cthulhu.html",
-  "/pages/libros/neuromante.html",
-
-];
-
-async function leerArchivos() {
-  for (let i = 0; i < Archivos.length; i++) {
-    let response = await fetch(Archivos[i]);
-    let htmlText = await response.text();
-    let parser = new DOMParser();
-    let doc = parser.parseFromString(htmlText, "text/html");
-
-    let titulo = doc.querySelector("title")?.innerText || Archivos[i];
-    let palabras = doc.querySelector('meta[name="keywords"]')?.content || "";
-
-    paginas[i] = [Archivos[i], titulo, palabras];
-  }
+function getRelativeRoot() {
+    const path = window.location.pathname;
+    if (path.includes('/pages/autores/') || path.includes('/pages/libros/') || path.includes('/pages/generos/')) {
+        return '../../';
+    } else if (path.includes('/pages/')) {
+        return '../';
+    }
+    return './';
 }
 
-// logica del buscador
+async function prepareSearchData() {
+    try {
+        const [booksData, authorsData, genresData] = await Promise.all([
+            api.getAllBooks(),
+            api.getAuthors(),
+            api.getGenres()
+        ]);
+
+        const books = Array.isArray(booksData) ? booksData : (booksData?.items || booksData?.data || []);
+        const authors = Array.isArray(authorsData) ? authorsData : (authorsData?.items || authorsData?.data || []);
+        const genres = Array.isArray(genresData) ? genresData : (genresData?.items || genresData?.data || []);
+
+        const root = getRelativeRoot();
+
+        searchData = [
+            ...books.map(b => ({ type: 'Libro', title: b.name, url: `${root}pages/libros/detalle.html?id=${b.bookId}`, extra: b.authorName })),
+            ...authors.map(a => ({ type: 'Autor', title: a.name, url: `${root}pages/autores/detalle.html?id=${a.id}`, extra: a.nationality })),
+            ...genres.map(g => ({ type: 'Género', title: g.name, url: `${root}pages/libros/index.html?genre=${g.id}`, extra: 'Ver libros de este género' }))
+        ];
+    } catch (error) {
+        console.error('Error preparing search data:', error);
+    }
+}
+
+
 function normalizar(txt) {
-  return (txt || "")
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "") // quita tildes
-    .trim();
+    return (txt || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim();
 }
 
-function filtrarPaginas(query) {
-  const q = normalizar(query);
-  if (!q) return [];
-
-  return paginas.filter(([url, titulo, palabras]) => {
-    const donde = normalizar(url + " " + titulo + " " + palabras);
-    return donde.includes(q);
-  });
-}
-
-function asegurarContenedorResultados() {
-  let box = document.getElementById("searchResults");
-  if (!box) {
-    const form = document.querySelector('form[role="search"]');
-    box = document.createElement("div");
-    box.id = "searchResults";
-    box.className = "mt-3";
-    form?.parentNode?.appendChild(box);
-  }
-  return box;
+function filtrar(query) {
+    const q = normalizar(query);
+    if (!q) return [];
+    return searchData.filter(item => {
+        const text = normalizar(`${item.type} ${item.title} ${item.extra}`);
+        return text.includes(q);
+    });
 }
 
 function mostrarResultados(items, query) {
-  const box = asegurarContenedorResultados();
-  const q = normalizar(query);
+    const box = document.getElementById("searchResults");
+    if (!box) return;
 
-  // caso donde el usuario no escribe nada y da en enter
-  if (!q) {
-    box.innerHTML = `
-      <div class="alert alert-danger mb-0">
-        Debes escribir algo para buscar.
-      </div>
-    `;
-    return;
-  }
+    if (!query.trim()) {
+        box.innerHTML = '';
+        return;
+    }
 
-  // caso donde no hay resultados
-  if (items.length === 0) {
-    box.innerHTML = `
-      <div class="alert alert-warning mb-0">
-        No se encontraron resultados para <strong>${query}</strong>.
-      </div>
-    `;
-    return;
-  }
+    if (items.length === 0) {
+        box.innerHTML = `<div class="alert alert-warning">No se encontraron resultados para "<strong>${query}</strong>"</div>`;
+        return;
+    }
 
-  // cado donde hay resultados
-  const links = items
-    .slice(0, 15)
-    .map(([url, titulo, palabras]) => {
-      return `
-        <a href="${url}" class="list-group-item list-group-item-action">
-          <div class="fw-semibold">${titulo}</div>
-          <div class="small text-muted">${palabras}</div>
+    const html = items.map(item => `
+        <a href="${item.url}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h6 class="mb-1">${item.title}</h6>
+                <small class="badge bg-secondary">${item.type}</small>
+            </div>
+            <p class="mb-1 small text-muted">${item.extra}</p>
         </a>
-      `;
-    })
-    .join("");
+    `).join('');
 
-  box.innerHTML = `
-    <div class="card shadow-sm border-0">
-      <div class="card-header bg-white">
-        Resultados para <strong>${query}</strong>
-        <span class="text-muted">(${items.length})</span>
-      </div>
-      <div class="list-group list-group-flush">${links}</div>
-    </div>
-  `;
+    box.innerHTML = `
+        <div class="card shadow-sm border-0">
+            <div class="list-group list-group-flush">
+                ${html}
+            </div>
+        </div>
+    `;
 }
 
+document.addEventListener('DOMContentLoaded', async () => {
+    await prepareSearchData();
 
-document.addEventListener("DOMContentLoaded", async () => {
-  await leerArchivos();
+    const input = document.getElementById("search");
+    const form = document.getElementById("searchForm");
 
-  const input = document.getElementById("search");
-  const form = document.querySelector('form[role="search"]');
+    if (input) {
+        input.addEventListener('input', (e) => {
+            const query = e.target.value;
+            const resultados = filtrar(query);
+            mostrarResultados(resultados, query);
+        });
+    }
 
-  const ejecutarBusqueda = () => {
-    const q = input.value;
-    const resultados = filtrarPaginas(q);
-    mostrarResultados(resultados, q);
-  };
-
-  // Buscar con Enter
-  form?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    ejecutarBusqueda();
-  });
-
-  // Búsqueda “en vivo” mientras se escribe
-  input?.addEventListener("input", ejecutarBusqueda);
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = input.value;
+            const resultados = filtrar(query);
+            mostrarResultados(resultados, query);
+        });
+    }
 });

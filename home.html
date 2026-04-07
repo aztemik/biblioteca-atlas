@@ -84,101 +84,32 @@
       <section class="row justify-content-center">
         <div class="col-lg-8 col-xl-8">
           <div class="bc" id="pag"></div>
-          <div class="row g-4">
-            <!-- FANTASÍA -->
-            <article class="col-md-4 col-sm-6">
-              <a
-                href="pages/generos/fantasia.html"
-                class="card h-100 shadow-sm border-0 text-decoration-none"
-              >
-                <div class="position-relative">
-                  <img
-                    src="https://placehold.co/600x400?text=Fantasía"
-                    class="card-img-top"
-                    alt="Género Fantasía"
-                  />
-                  <span class="badge bg-dark position-absolute top-0 end-0 m-2">
-                    <i class="fa fa-book"></i> Fantasía
-                  </span>
-                </div>
-                <div class="card-footer bg-light text-center small text-muted">
-                  <i class="fa fa-arrow-right"></i> Explorar categoría
-                </div>
-              </a>
-            </article>
-
-            <!-- CIENCIA FICCIÓN -->
-            <article class="col-md-4 col-sm-6">
-              <a
-                href="pages/generos/ciencia-ficcion.html"
-                class="card h-100 shadow-sm border-0 text-decoration-none"
-              >
-                <div class="position-relative">
-                  <img
-                    src="https://placehold.co/600x400?text=Ciencia%20Ficción"
-                    class="card-img-top"
-                    alt="Género Ciencia Ficción"
-                  />
-                  <span class="badge bg-dark position-absolute top-0 end-0 m-2">
-                    <i class="fa fa-book"></i> Ciencia Ficción
-                  </span>
-                </div>
-                <div class="card-footer bg-light text-center small text-muted">
-                  <i class="fa fa-arrow-right"></i> Explorar categoría
-                </div>
-              </a>
-            </article>
-
-            <!-- TERROR -->
-            <article class="col-md-4 col-sm-6">
-              <a
-                href="pages/generos/terror.html"
-                class="card h-100 shadow-sm border-0 text-decoration-none"
-              >
-                <div class="position-relative">
-                  <img
-                    src="https://placehold.co/600x400?text=Terror"
-                    class="card-img-top"
-                    alt="Género Terror"
-                  />
-                  <span class="badge bg-dark position-absolute top-0 end-0 m-2">
-                    <i class="fa fa-book"></i> Terror
-                  </span>
-                </div>
-                <div class="card-footer bg-light text-center small text-muted">
-                  <i class="fa fa-arrow-right"></i> Explorar categoría
-                </div>
-              </a>
-            </article>
-
-            <!-- CÓMIC -->
-            <article class="col-md-4 col-sm-6">
-              <a
-                href="pages/generos/comic.html"
-                class="card h-100 shadow-sm border-0 text-decoration-none"
-              >
-                <div class="position-relative">
-                  <img
-                    src="https://placehold.co/600x400?text=Cómic"
-                    class="card-img-top"
-                    alt="Género Cómic"
-                  />
-                  <span class="badge bg-dark position-absolute top-0 end-0 m-2">
-                    <i class="fa fa-book"></i> Cómic
-                  </span>
-                </div>
-                <div class="card-footer bg-light text-center small text-muted">
-                  <i class="fa fa-arrow-right"></i> Explorar categoría
-                </div>
-              </a>
-            </article>
+          <div id="genres-container" class="row g-4">
+            <!-- Dynamic Content -->
           </div>
         </div>
       </section>
     </main>
 
+    <!-- FOOTER -->
+    <footer class="bg-white py-3 border-top">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item">
+          <a href="home.html" class="nav-link px-2 text-body-secondary">Géneros</a>
+        </li>
+        <li class="nav-item">
+          <a href="pages/libros/index.html" class="nav-link px-2 text-body-secondary">Libros</a>
+        </li>
+        <li class="nav-item">
+          <a href="pages/autores/index.html" class="nav-link px-2 text-body-secondary">Autores</a>
+        </li>
+      </ul>
+      <p class="text-center text-body-secondary">&copy; 2026 Biblioteca Atlas, Inc</p>
+    </footer>
+
     <script src="src/js/breadcrumbs.js"></script>
     <script src="src/asset/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="src/js/buscador.js"></script>
+    <script type="module" src="src/js/generos.js"></script>
+    <script type="module" src="src/js/buscador.js"></script>
   </body>
 </html>
