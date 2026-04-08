@@ -2,10 +2,9 @@ const BASE_URL = 'http://localhost:5145/api/v1';
 
 export const api = {
     async getBooksByGenre(genreId) {
-        const response = await fetch(`${BASE_URL}/Books`);
+        const response = await fetch(`${BASE_URL}/Books/searchBooksByGenre/${genreId}`);
         if (!response.ok) throw new Error('Error al obtener libros por género');
-        const books = await response.json();
-        return books.filter(b => b.genreId == genreId);
+        return await response.json();
     },
 
     async getAllBooks() {
@@ -54,12 +53,6 @@ export const api = {
     async getGenreById(id) {
         const response = await fetch(`${BASE_URL}/Genres/${id}`);
         if (!response.ok) throw new Error('Error al obtener el género');
-        return await response.json();
-    },
-
-    async getTags() {
-        const response = await fetch(`${BASE_URL}/Tags`);
-        if (!response.ok) throw new Error('Error al obtener etiquetas');
         return await response.json();
     }
 };

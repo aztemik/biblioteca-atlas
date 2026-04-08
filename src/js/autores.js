@@ -18,7 +18,7 @@ async function loadAuthors(page = 1) {
         const { items: authors, pageNumber } = response;
         totalPages = response.totalPages;
         
-        container.innerHTML = '';
+        ui.hideLoader('authors-container');
         currentPage = pageNumber;
         
         if (authors && authors.length > 0) {

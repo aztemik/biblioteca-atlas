@@ -29,7 +29,7 @@ async function loadBooks(page = 1) {
             paginationContainer.style.display = 'block';
         }
 
-        container.innerHTML = '';
+        ui.hideLoader('books-container');
         
         if (books && books.length > 0) {
             books.forEach(book => {

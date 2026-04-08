@@ -7,7 +7,7 @@ async function loadGenres() {
     
     try {
         const genres = await api.getGenres();
-        container.innerHTML = '';
+        ui.hideLoader('genres-container');
         
         if (genres && genres.length > 0) {
             genres.forEach(genre => {
