@@ -16,12 +16,10 @@ async function loadAuthorDetail() {
         const author = await api.getAuthorById(authorId);
         document.title = `${author.name} | Biblioteca Atlas`;
 
-        // Intentar obtener libros de este autor filtrando todos los libros
         let booksHtml = '';
         try {
-            const allBooks = await api.getAllBooks();
-            const authorBooks = allBooks.filter(b => b.authorId == authorId);
-            if (authorBooks.length > 0) {
+            const authorBooks = await api.getBooksByAuthor(authorId);
+            if (authorBooks && authorBooks.length > 0) {
                 booksHtml = `
                     <section class="mt-4">
                         <h3><i class="fa fa-bookmark"></i> Libros en el catálogo</h3>

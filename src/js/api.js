@@ -7,6 +7,12 @@ export const api = {
         return await response.json();
     },
 
+    async getBooksByAuthor(authorId) {
+        const response = await fetch(`${BASE_URL}/Books/searchBooksByAuthor/${authorId}`);
+        if (!response.ok) throw new Error('Error al obtener libros por autor');
+        return await response.json();
+    },
+
     async getAllBooks() {
         const response = await fetch(`${BASE_URL}/Books`);
         if (!response.ok) throw new Error('Error al obtener todos los libros');
