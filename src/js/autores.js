@@ -1,13 +1,25 @@
 import { api } from './api.js';
 import { ui } from './ui.js';
 
-async function loadAuthors() {
+let currentPage = 1;
+let totalPages = 1;
+const pageSize = 5;
+
+async function loadAuthors(page = 1) {
     const container = document.getElementById('authors-container');
+    const pageInfo = document.getElementById('page-info');
+    const prevBtn = document.getElementById('prev-page');
+    const nextBtn = document.getElementById('next-page');
+
     ui.showLoader('authors-container');
     
     try {
-        const authors = await api.getAuthors();
+        const response = await api.getAuthorsPaged(page, pageSize);
+        const { items: authors, pageNumber } = response;
+        totalPages = response.totalPages;
+        
         container.innerHTML = '';
+        currentPage = pageNumber;
         
         if (authors && authors.length > 0) {
             authors.forEach(author => {
@@ -35,52 +47,46 @@ async function loadAuthors() {
         } else {
             container.innerHTML = '<p class="text-center w-100">No se encontraron autores.</p>';
         }
+
+        // Update pagination UI
+        if (pageInfo) pageInfo.textContent = `Página ${currentPage} de ${totalPages}`;
+        
+        if (prevBtn) {
+            prevBtn.classList.toggle('disabled', currentPage <= 1);
+        }
+        
+        if (nextBtn) {
+            nextBtn.classList.toggle('disabled', currentPage >= totalPages);
+        }
+
     } catch (error) {
         ui.showAlert('Error al cargar autores: ' + error.message);
         container.innerHTML = '<p class="text-center w-100 text-danger">Error al cargar el contenido.</p>';
     }
 }
 
-async function showAuthorDetails(id) {
-    try {
-        const author = await api.getAuthorById(id);
-        const modalHtml = `
-            <div class="modal fade" id="authorDetailModal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">${author.name}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p><strong>Nacionalidad:</strong> ${author.nationality}</p>
-                                    <p><strong>Años:</strong> ${author.birthYear} - ${author.deathYear || 'Presente'}</p>
-                                    <p><strong>Premios:</strong> ${author.awards.join(', ') || 'Ninguno'}</p>
-                                    <blockquote class="blockquote mt-3">
-                                        <p class="mb-0 italic">"${author.quote}"</p>
-                                    </blockquote>
-                                    <hr>
-                                    <h5>Biografía</h5>
-                                    <p>${author.bio}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
+function setupPagination() {
+    const prevBtn = document.getElementById('prev-page');
+    const nextBtn = document.getElementById('next-page');
 
-        const existingModal = document.getElementById('authorDetailModal');
-        if (existingModal) existingModal.remove();
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                loadAuthors(currentPage - 1);
+            }
+        });
+    }
 
-        document.body.insertAdjacentHTML('beforeend', modalHtml);
-        const modal = new bootstrap.Modal(document.getElementById('authorDetailModal'));
-        modal.show();
-    } catch (error) {
-        ui.showAlert('Error al cargar detalles del autor: ' + error.message);
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                loadAuthors(currentPage + 1);
+            }
+        });
     }
 }
 
-document.addEventListener('DOMContentLoaded', loadAuthors);
+document.addEventListener('DOMContentLoaded', () => {
+    loadAuthors(currentPage);
+    setupPagination();
+});

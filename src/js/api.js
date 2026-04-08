@@ -18,8 +18,7 @@ export const api = {
 
         const response = await fetch(`${BASE_URL}/Books/Paged?pageNumber=${pageNumber}&pageSize=${pageSize}`);
         if (!response.ok) throw new Error('Error al obtener libros');
-        const data = await response.json();
-        return data.items || data.data || data;
+        return await response.json();
     },
 
     async getBookById(id) {
@@ -31,6 +30,12 @@ export const api = {
     async getAuthors() {
         const response = await fetch(`${BASE_URL}/Authors`);
         if (!response.ok) throw new Error('Error al obtener autores');
+        return await response.json();
+    },
+
+    async getAuthorsPaged(pageNumber = 1, pageSize = 5) {
+        const response = await fetch(`${BASE_URL}/Authors/Paged?pageNumber=${pageNumber}&pageSize=${pageSize}`);
+        if (!response.ok) throw new Error('Error al obtener autores paginados');
         return await response.json();
     },
 
