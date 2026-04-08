@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel Administrativo - Biblioteca Atlas</title>
+    <link rel="stylesheet" href="/src/asset/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/src/asset/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/src/asset/css/style.css" />
+  </head>
+  <body class="bg-light">
+    <!-- HEADER -->
+    <header class="border-bottom text-center bg-white">
+      <img
+        class="d-block mx-auto mb-4"
+        src="/src/asset/images/atlas.jpg"
+        width="250"
+        alt="Logo Biblioteca Atlas"
+      />
+
+      <h1 class="display-5 fw-bold text-body-emphasis">Biblioteca Atlas</h1>
+
+      <p class="text-muted lead mb-4">
+        <i class="fa fa-quote-left"></i>
+        Un mundo de historias en un solo lugar
+        <i class="fa fa-quote-right"></i>
+      </p>
+    </header>
+
+    <!-- BUSCADOR -->
+    <section class="bg-light border-bottom">
+      <div class="container py-2">
+        <form class="d-flex" action="#" role="search" id="searchForm">
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa fa-search"></i></span>
+
+            <label for="search" class="visually-hidden">Buscar</label>
+            <input
+              id="search"
+              class="form-control"
+              type="search"
+              placeholder="Buscar en géneros, libros y autores..."
+              autocomplete="off"
+            />
+
+            <button class="btn btn-secondary" type="submit">
+              <i class="fa fa-arrow-right"></i> Buscar
+            </button>
+          </div>
+        </form>
+
+        <div id="searchResults" class="mt-3"></div>
+      </div>
+    </section>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-dark bg-dark" aria-label="Navegación administrativa">
+      <div class="container">
+        <ul class="navbar-nav mx-auto flex-row">
+          <li class="nav-item px-3">
+            <a class="nav-link active" href="/pages/admin/index.html">Dashboard</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link" href="/pages/admin/generos.html">Géneros</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link" href="/pages/admin/libros.html">Libros</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link" href="/pages/admin/autores.html">Autores</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link text-info" href="/home.html"><i class="fa fa-external-link"></i> Ver Sitio</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="container py-5">
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm border-0">
+            <div class="card-body text-center">
+              <i class="fa fa-tags fa-3x mb-3 text-primary"></i>
+              <h5 class="card-title">Géneros</h5>
+              <p class="card-text">Administrar categorías de libros.</p>
+              <a href="/pages/admin/generos.html" class="btn btn-primary">Gestionar Géneros</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm border-0">
+            <div class="card-body text-center">
+              <i class="fa fa-users fa-3x mb-3 text-success"></i>
+              <h5 class="card-title">Autores</h5>
+              <p class="card-text">Administrar autores y sus biografías.</p>
+              <a href="/pages/admin/autores.html" class="btn btn-success">Gestionar Autores</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm border-0">
+            <div class="card-body text-center">
+              <i class="fa fa-book fa-3x mb-3 text-warning"></i>
+              <h5 class="card-title">Libros</h5>
+              <p class="card-text">Administrar el catálogo completo de libros.</p>
+              <a href="/pages/admin/libros.html" class="btn btn-warning">Gestionar Libros</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white py-3 border-top mt-auto">
+      <p class="text-center text-body-secondary">&copy; 2026 Biblioteca Atlas, Inc - Panel Admin</p>
+    </footer>
+
+    <script src="/src/asset/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
